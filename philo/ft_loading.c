@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:00 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 14:31:43 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 21:36:18 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_clean(t_table *table)
 {
 	if (table->philos)
 		ft_clean_philos(table->philos);
+	pthread_mutex_destroy(&table->print);
 	free(table);
 }
 
@@ -58,5 +59,6 @@ t_table	*ft_loading(int argc, char **argv)
 		ft_clean(table);
 		table = NULL;
 	}
+	pthread_mutex_init(&table->print, NULL);
 	return (table);
 }

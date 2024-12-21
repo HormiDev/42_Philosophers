@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 04:43:06 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 18:01:30 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_table
 	long			ends;
 	long			deads;
 	int				start;
+	long			start_time;
 	t_philo			*philos;
 	pthread_mutex_t	print;
 }	t_table;
