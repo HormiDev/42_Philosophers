@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 04:32:32 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 14:36:43 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	*ft_philo(void *philo_void)
 {
 	t_philo	*philo;
 	t_table	*table;
-
+	
 	philo = (t_philo *)philo_void;
 	table = philo->table;
+	philo->time_to_die = ft_get_time() + table->time_to_die;
 	while (table->start == 0)
-		usleep(1);
-	write(1, "prror\n", 6);
+		usleep(100);
 	philo->time_to_die = ft_get_time() + table->time_to_die;
 	if (philo->id % 2 == 0)
 		usleep(1000);
