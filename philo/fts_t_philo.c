@@ -6,15 +6,15 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:15:53 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 03:30:03 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 04:44:56 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philo *ft_new_philo(long id)
+t_philo	*ft_new_philo(long id)
 {
-	t_philo *new;
+	t_philo	*new;
 
 	new = ft_calloc(1, sizeof(t_philo));
 	if (!new)
@@ -25,9 +25,9 @@ t_philo *ft_new_philo(long id)
 	return (new);
 }
 
-t_philo *ft_last_philo(t_philo *philo)
+t_philo	*ft_last_philo(t_philo *philo)
 {
-	t_philo *last;
+	t_philo	*last;
 
 	last = philo;
 	while (last && last->next)
@@ -35,9 +35,9 @@ t_philo *ft_last_philo(t_philo *philo)
 	return (last);
 }
 
-void ft_add_philo(t_philo **philo, t_philo *new)
+void	ft_add_philo(t_philo **philo, t_philo *new)
 {
-	t_philo *last;
+	t_philo	*last;
 
 	if (!*philo)
 	{
@@ -50,8 +50,8 @@ void ft_add_philo(t_philo **philo, t_philo *new)
 
 void	ft_clean_philos(t_philo *philo)
 {
-	t_philo *tmp;
-	t_philo *initial_philo;
+	t_philo	*tmp;
+	t_philo	*initial_philo;
 
 	initial_philo = philo;
 	while (philo->next != initial_philo && philo->next)

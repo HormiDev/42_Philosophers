@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 04:23:26 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 04:43:06 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	long	n_philos;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	long	n_times;
-	long	ends;
-	long	deads;
-	int		start;
-	t_philo	*philos;
+	long			n_philos;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	long			n_times;
+	long			ends;
+	long			deads;
+	int				start;
+	t_philo			*philos;
 	pthread_mutex_t	print;
 }	t_table;
 
@@ -69,8 +69,8 @@ void	ft_parsing(t_table *table, int argc, char **argv);
 t_table	*ft_loading(int argc, char **argv);
 void	ft_clean(t_table *table);
 void	*ft_calloc(size_t count, size_t size);
-t_philo *ft_new_philo(long id);
-t_philo *ft_last_philo(t_philo *philo);
+t_philo	*ft_new_philo(long id);
+t_philo	*ft_last_philo(t_philo *philo);
 void	ft_add_philo(t_philo **philo, t_philo *new);
 void	ft_clean_philos(t_philo *philo);
 void	ft_create_philos(t_table *table);

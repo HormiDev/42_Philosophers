@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:09:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 00:34:43 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 04:46:45 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int ft_printerror(int error_code)
+int	ft_printerror(int error_code)
 {
 	write(2, RED, ft_strlen(RED));
 	write(2, "Error:\n", 7);

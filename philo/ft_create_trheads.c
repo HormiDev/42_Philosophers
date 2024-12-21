@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:45:03 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 04:33:36 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/21 05:03:54 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_create_trheads(t_table *table)
 {
-	t_philo		*philo;
+	t_philo	*philo;
 	int		i;
 
 	i = 0;
