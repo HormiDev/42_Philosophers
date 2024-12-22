@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 02:37:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 20:38:36 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/22 12:31:49 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_start(t_table *table)
 	table->start = 1;
 	while (table->ends < table->n_philos)
 	{
-		if (philo->time_to_die < ft_get_time())
+		if (philo->time_to_die < ft_get_time() && philo->n_times != table->n_times)
 		{
 			pthread_detach(philo->thread);
 			ft_print_status(philo, DEAD);

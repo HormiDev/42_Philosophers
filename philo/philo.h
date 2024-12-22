@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 18:01:30 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/22 13:12:40 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_table
 	long			time_to_sleep;
 	long			n_times;
 	long			ends;
+	pthread_mutex_t	ends_mutex;
 	long			deads;
 	int				start;
 	long			start_time;

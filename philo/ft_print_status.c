@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 01:23:24 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 20:56:49 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/22 12:38:21 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,9 @@ void	ft_print_status_2(t_philo *philo, int status)
 
 void	ft_print_status(t_philo *philo, int status)
 {
-	int	mutex;
-
-	mutex = 1;
-	while (mutex != 0)
-	{
-		mutex = pthread_mutex_lock(&philo->table->print);
-		usleep(1);
-	}
+	pthread_mutex_lock(&philo->table->print);
 	if (philo->table->deads == 0)
 		ft_print_status_2(philo, status);
-	pthread_mutex_unlock(&philo->table->print);
+	if (status != DEAD)
+		pthread_mutex_unlock(&philo->table->print);
 }

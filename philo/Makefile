@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 19:07:33 by ide-dieg          #+#    #+#              #
-#    Updated: 2024/12/21 21:32:02 by ide-dieg         ###   ########.fr        #
+#    Updated: 2024/12/22 02:03:08 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g
 
 SRC =	main.c \
 		ft_atol.c \

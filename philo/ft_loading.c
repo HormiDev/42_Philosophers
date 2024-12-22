@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:00 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 21:36:18 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/12/22 13:13:21 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ t_table	*ft_loading(int argc, char **argv)
 		table = NULL;
 	}
 	pthread_mutex_init(&table->print, NULL);
+	pthread_mutex_init(&table->ends_mutex, NULL);
+	table->start = 0;
 	return (table);
 }
