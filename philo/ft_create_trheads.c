@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:45:03 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/21 17:57:32 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:18:33 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ void	ft_create_trheads(t_table *table)
 		philo = philo->next;
 		i++;
 	}
-	usleep(10000);
 }

@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:00 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/22 13:13:21 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:24:20 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_create_philos(t_table *table)
 			return ;
 		}
 		new->table = table;
+		new->time_to_die = ft_get_time() + table->n_philos * 200;
 		ft_add_philo(&philo, new);
 		i++;
 	}
