@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 02:37:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/01/16 16:06:30 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:27:51 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_start(t_table *table)
 		}
 		philo = philo->next;
 	}
-	while (table->ends < table->n_philos)
-		usleep(100);
+	//while (table->ends < table->n_philos)
+	//	usleep(100);
 }

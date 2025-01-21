@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/12/22 13:12:40 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:14:38 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 
 typedef struct s_philo
 {
+	int				is_sleep;
 	long			id;
 	long			time_to_die;
 	long			time_to_eat;

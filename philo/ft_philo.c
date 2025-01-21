@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/01/16 16:07:56 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:20:13 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ void	*ft_philo(void *philo_void)
 	{
 		ft_eat(philo);
 		ft_print_status(philo, SLEEP);
+		philo->is_sleep = 1;
 		usleep(table->time_to_sleep * 1000);
+		philo->is_sleep = 0;
 		ft_print_status(philo, THINK);
 		philo->n_times++;
 	}
 	pthread_mutex_lock(&table->ends_mutex);
 	philo->table->ends++;
-	printf("Ends: %ld\n", philo->table->ends);
 	pthread_mutex_unlock(&table->ends_mutex);
 	return (NULL);
 }
