@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+         #
+#    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 19:07:33 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/01/22 00:24:42 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/14 16:32:26 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
 
 SRC =	main.c \
 		ft_atol.c \

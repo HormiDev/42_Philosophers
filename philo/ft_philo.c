@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/01/21 12:20:13 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:49:04 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void	ft_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->fork);
-	ft_print_status(philo, TAKE);
-	pthread_mutex_lock(&philo->next->fork);
-	ft_print_status(philo, TAKE);
+	if (&philo->fork < &philo->next->fork)
+	{
+		pthread_mutex_lock(&philo->fork);
+		ft_print_status(philo, TAKE);
+		pthread_mutex_lock(&philo->next->fork);
+		ft_print_status(philo, TAKE);
+	}
+	else
+	{
+		pthread_mutex_lock(&philo->next->fork);
+		ft_print_status(philo, TAKE);
+		pthread_mutex_lock(&philo->fork);
+		ft_print_status(philo, TAKE);
+	}
 	philo->time_to_die = ft_get_time() + philo->table->time_to_die;
 	philo->time_to_eat = ft_get_time() + philo->table->time_to_eat;
 	ft_print_status(philo, EAT);
