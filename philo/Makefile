@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 19:07:33 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/05/14 16:32:26 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/18 01:48:44 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	main.c \
 		ft_atol.c \
@@ -33,16 +33,21 @@ SRC =	main.c \
 		ft_start.c \
 		fts_t_philo.c \
 
+OBJ = $(SRC:%.c=%.o)
 
-$(NAME): $(SRC)
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+$(NAME): ide-dieg philosopher_title $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(VERDE)$(NAME) compiled$(NC)"
 
-f_clean:
+clean:
+	@rm -f $(OBJ)
+	@echo "$(ROJO)$(NAME) objects removed$(NC)"
+
+fclean: clean
 	@rm -f $(NAME)
 	@echo "$(ROJO)$(NAME) removed$(NC)"
 
-re: f_clean $(NAME)
+re: fclean $(NAME)
 
 ROJO = \033[0;31m
 NC = \033[0m

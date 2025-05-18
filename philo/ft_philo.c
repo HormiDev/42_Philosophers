@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/14 16:49:04 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/18 01:34:02 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ void	*ft_philo(void *philo_void)
 		ft_print_status(philo, THINK);
 		philo->n_times++;
 	}
-	pthread_mutex_lock(&table->ends_mutex);
-	philo->table->ends++;
-	pthread_mutex_unlock(&table->ends_mutex);
+	philo->is_sleep = 1;
+	while (1)
+	{
+		usleep(100000000);
+	}
 	return (NULL);
 }
