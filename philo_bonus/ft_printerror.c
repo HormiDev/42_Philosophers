@@ -6,11 +6,11 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:09:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:30:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/18 03:11:05 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	ft_printerror(int error_code)
 {

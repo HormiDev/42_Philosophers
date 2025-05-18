@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 01:34:02 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/18 23:30:08 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->next->fork);
 }
 
+void	ft_one_philo(t_philo *philo)
+{
+	while (philo->table->start == 0)
+		usleep(100);
+	ft_print_status(philo, TAKE);
+	philo->is_sleep = 1;
+	while (1)
+		usleep(100000000);
+}
+
 void	*ft_philo(void *philo_void)
 {
 	t_philo	*philo;
@@ -44,6 +54,8 @@ void	*ft_philo(void *philo_void)
 
 	philo = (t_philo *)philo_void;
 	table = philo->table;
+	if (philo->table->n_philos == 1)
+		ft_one_philo(philo);
 	while (table->start == 0)
 		usleep(100);
 	philo->time_to_die = ft_get_time() + table->time_to_die;
@@ -61,8 +73,6 @@ void	*ft_philo(void *philo_void)
 	}
 	philo->is_sleep = 1;
 	while (1)
-	{
 		usleep(100000000);
-	}
 	return (NULL);
 }

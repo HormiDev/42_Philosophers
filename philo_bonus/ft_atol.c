@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_arguments.c                               :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 19:16:55 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:28:06 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/12/20 19:46:22 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/18 03:13:38 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	ft_check_arguments(int argc, char **argv)
+long	ft_atol(const char *str)
 {
-	int	i;
-	int	j;
+	long	num;
+	int		cont;
+	int		mult;
 
-	i = 1;
-	while (i < argc)
+	num = 0;
+	cont = 0;
+	mult = 1;
+	while (str[cont] == ' ' || (str[cont] >= '\t' && str[cont] <= '\r'))
+		cont++;
+	if (str[cont] == '-')
+		mult = -1;
+	if (str[cont] == '-' || str[cont] == '+')
+		cont++;
+	while (ft_isdigit(str[cont]))
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (ft_printerror(2));
-			j++;
-		}
-		if (ft_atol(argv[i]) <= 0)
-			return (ft_printerror(3));
-		i++;
+		num = num * 10 + (str[cont] - 48);
+		cont++;
 	}
-	return (0);
+	return (num * mult);
 }

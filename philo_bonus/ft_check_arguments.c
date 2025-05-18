@@ -6,11 +6,11 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:16:55 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:28:06 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/18 03:11:19 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	ft_check_arguments(int argc, char **argv)
 {

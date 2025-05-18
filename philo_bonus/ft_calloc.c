@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_arguments.c                               :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 19:16:55 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:28:06 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/12/20 23:42:11 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/18 03:11:42 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	ft_check_arguments(int argc, char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	int	j;
+	size_t	cont;
+	char	*str;
 
-	i = 1;
-	while (i < argc)
+	str = (char *)s;
+	cont = 0;
+	while (cont < n)
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (ft_printerror(2));
-			j++;
-		}
-		if (ft_atol(argv[i]) <= 0)
-			return (ft_printerror(3));
-		i++;
+		str[cont] = 0;
+		cont++;
 	}
-	return (0);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*punt;
+
+	punt = malloc(count * size);
+	if (punt)
+	{
+		ft_bzero(punt, count * size);
+		return (punt);
+	}
+	else
+		return (0);
 }

@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_arguments.c                               :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 19:16:55 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:28:06 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/12/20 19:56:44 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/18 03:11:12 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-int	ft_check_arguments(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (ft_printerror(2));
-			j++;
-		}
-		if (ft_atol(argv[i]) <= 0)
-			return (ft_printerror(3));
-		i++;
-	}
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }
