@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:31 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:30:41 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/22 01:49:00 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	usleep(100 * table->n_philos);
 	ft_start(table);
 	ft_dead_trheads(table);
+	usleep(1000 * table->n_philos);
 	ft_clean(table);
 	return (0);
 }

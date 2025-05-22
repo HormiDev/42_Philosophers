@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:15:53 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:30:31 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/21 22:40:38 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ void	ft_clean_philos(t_philo *philo)
 	t_philo	*initial_philo;
 
 	initial_philo = philo;
-	while (philo->next != initial_philo && philo->next)
+	philo = philo->next;
+	while (philo != initial_philo && philo->next)
 	{
 		tmp = philo;
 		philo = philo->next;
 		pthread_mutex_destroy(&tmp->fork);
 		free(tmp);
 	}
-	free(philo);
+	pthread_mutex_destroy(&initial_philo->fork);
+	free(initial_philo);
 }

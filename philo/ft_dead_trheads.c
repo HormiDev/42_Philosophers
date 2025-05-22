@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:00:51 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 23:28:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/21 22:40:56 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ void	ft_dead_trheads(t_table *table)
 	//long	i;
 
 	philo = table->philos;
-	while (philo->table->ends < table->n_philos)
+	while (table->ends < table->n_philos)
 	{
-		if (table->philos->is_sleep)
+		if (philo->is_sleep)
 		{
-			pthread_detach(philo->thread);
+			if (pthread_detach(philo->thread) == 0)
+				philo->is_sleep = 0;
+			//printf("philo %ld is dead\n", philo->id);
 			philo = philo->next;
 			pthread_mutex_lock(&table->ends_mutex);
-			philo->table->ends++;
+			table->ends++;
 			pthread_mutex_unlock(&table->ends_mutex);
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/01/21 12:14:38 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/21 20:27:08 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ typedef struct s_table
 	long			n_times;
 	long			ends;
 	pthread_mutex_t	ends_mutex;
+	pthread_mutex_t	deads_mutex;
 	long			deads;
-	int				start;
+	pthread_mutex_t	start;
 	long			start_time;
 	t_philo			*philos;
 	pthread_mutex_t	print;
