@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:49:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:39:26 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/23 04:28:06 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	*ft_monitor(void *table_void)
+static void	*ft_monitor(void *table_void)
 {
 	t_table	*table;
 
@@ -25,8 +25,8 @@ void	*ft_monitor(void *table_void)
 			free(table->philos);
 			free(table);
 			exit(1);
-		}	
-		usleep(100);
+		}
+		usleep(1000);
 	}
 }
 
@@ -44,7 +44,7 @@ void	ft_philo(t_table *table)
 		ft_print_status(table, TAKE);
 		sem_wait(table->forks);
 		ft_print_status(table, TAKE);
-		table->philo_time_to_die = ft_get_time() + (table->time_to_die * 1000);
+		table->philo_time_to_die = ft_get_time() + table->time_to_die;
 		table->n_times--;
 		ft_print_status(table, EAT);
 		usleep(table->time_to_eat * 1000);

@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 00:27:12 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/05/23 03:54:06 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/23 04:07:06 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror# -fsanitize=address -g3
 
 SRC =	main.c \
 		ft_atol.c \
