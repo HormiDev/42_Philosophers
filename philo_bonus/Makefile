@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 00:27:12 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/05/18 03:13:05 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/23 03:54:06 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,15 @@ SRC =	main.c \
 		ft_strlen.c \
 		ft_printerror.c \
 		ft_calloc.c \
+		ft_clean_table.c \
+		ft_create_processes.c \
+		ft_get_time.c \
+		ft_kill_pids.c \
+		ft_loading.c \
+		ft_philo.c \
+		ft_print_status.c \
+		ft_wait_processes.c
+		
 
 OBJ = $(SRC:%.c=%.o)
 

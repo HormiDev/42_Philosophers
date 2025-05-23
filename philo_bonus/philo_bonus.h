@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 03:10:43 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/23 03:55:18 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,26 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <string.h>
+#include <semaphore.h>
+#include <fcntl.h>
+#include <signal.h>
 
-typedef struct s_philo
-{
-	int				is_sleep;
-	long			id;
-	long			time_to_die;
-	long			time_to_eat;
-	long			n_times;
-	pthread_t		thread;
-	pthread_mutex_t	fork;
-	struct s_philo	*next;
-	struct s_table	*table;
-}	t_philo;
+#include <sys/wait.h>
 
 typedef struct s_table
 {
+	int				id;
 	long			n_philos;
 	long			time_to_die;
+	long			philo_time_to_die;
 	long			time_to_eat;
 	long			time_to_sleep;
 	long			n_times;
-	long			ends;
-	pthread_mutex_t	ends_mutex;
-	long			deads;
-	int				start;
 	long			start_time;
-	t_philo			*philos;
-	pthread_mutex_t	print;
+	pid_t			*philos;
+	sem_t			*forks;
+	sem_t			*print;
+	pthread_t		monitor;
 }	t_table;
 
 int		ft_check_arguments(int argc, char **argv);
@@ -68,5 +60,14 @@ int		ft_isdigit(int c);
 long	ft_atol(const char *str);
 int		ft_strlen(char *str);
 int		ft_printerror(int error_code);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_create_processes(t_table *table);
+void	ft_philo(t_table *table);
+void	ft_print_status(t_table *table, int status);
+void	ft_wait_processes(t_table *table);
+void	ft_clean_table(t_table *table);
+void	ft_kill_pids(t_table *table);
+long	ft_get_time(void);
+t_table	*ft_loading(int argc, char **argv);
 
 #endif

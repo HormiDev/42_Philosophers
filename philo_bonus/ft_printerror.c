@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:09:47 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/18 03:11:05 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/23 03:57:14 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int	ft_printerror(int error_code)
 		write(2, "Arguments must be greater than 0\n", 34);
 	else if (error_code == 4)
 		write(2, "Malloc error\n", 13);
+	else if (error_code == 5)
+		write(2, "Fork error\n", 11);
+	else if (error_code == 6)
+		write(2, "Semaphore error\n", 16);
 	write(2, N, ft_strlen(N));
 	return (1);
 }

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_clean_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 02:58:31 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:56:16 by ide-dieg         ###   ########.fr       */
+/*   Created: 2025/05/23 00:06:03 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/23 03:00:14 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int argc, char **argv)
+void	ft_clean_table(t_table *table)
 {
-	t_table	*table;
-	
-	if (argc < 5 || argc > 6)
-		return (ft_printerror(1));
-	if (ft_check_arguments(argc, argv))
-		return (1);
-	table = ft_loading(argc, argv);
-	if (!table)
-		return (ft_printerror(4));
-	ft_create_processes(table);
-	ft_wait_processes(table);
-	ft_clean_table(table);
-	return (0);
+	ft_kill_pids(table);
+	sem_close(table->forks);
+	sem_unlink("forks");
+	sem_close(table->print);
+	sem_unlink("print");
+	free(table->philos);
+	free(table);
 }
