@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:49:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 04:28:06 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/23 04:32:56 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	*ft_monitor(void *table_void)
 			free(table);
 			exit(1);
 		}
-		usleep(1000);
+		usleep(100);
 	}
 }
 
