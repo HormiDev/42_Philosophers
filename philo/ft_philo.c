@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/22 02:26:15 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/24 00:40:45 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	ft_eat(t_philo *philo)
 		pthread_mutex_lock(&philo->fork);
 		ft_print_status(philo, TAKE);
 	}
+	pthread_mutex_lock(&philo->eat_mutex);
 	philo->time_to_die = ft_get_time() + philo->table->time_to_die;
+	pthread_mutex_unlock(&philo->eat_mutex);
 	philo->time_to_eat = ft_get_time() + philo->table->time_to_eat;
 	ft_print_status(philo, EAT);
 	while (ft_get_time() < philo->time_to_eat && philo->table->deads == 0)

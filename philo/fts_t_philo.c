@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:15:53 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/21 22:40:38 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/24 00:35:59 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_philo	*ft_new_philo(long id)
 		return (NULL);
 	new->id = id;
 	pthread_mutex_init(&new->fork, NULL);
+	pthread_mutex_init(&new->eat_mutex, NULL);
 	new->next = NULL;
 	return (new);
 }

@@ -3,4 +3,5 @@
 *.o
 .*
 philo
+philo_bonus
 !.gitignore
