@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 00:03:57 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 03:44:32 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,17 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->eat_mutex);
 	philo->time_to_eat = ft_get_time() + philo->table->time_to_eat;
 	ft_print_status(philo, EAT);
-	while (ft_get_time() < philo->time_to_eat && philo->table->deads == 0)
+	while (ft_get_time() < philo->time_to_eat)
+	{
+		pthread_mutex_lock(&philo->table->deads_mutex);
+		if (philo->table->deads != 0)
+		{
+			pthread_mutex_unlock(&philo->table->deads_mutex);
+			break;
+		}
+		pthread_mutex_unlock(&philo->table->deads_mutex);
 		usleep(1);
+	}
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
 }
@@ -78,6 +87,13 @@ void	*ft_philo(void *philo_void)
 		ft_print_status(philo, SLEEP);
 		philo->is_sleep = 1;
 		usleep(table->time_to_sleep * 1000);
+		pthread_mutex_lock(&philo->table->deads_mutex);
+		if (philo->table->deads != 0)
+		{
+			pthread_mutex_unlock(&philo->table->deads_mutex);
+			return (NULL);
+		}
+		pthread_mutex_unlock(&philo->table->deads_mutex);
 		philo->is_sleep = 0;
 		ft_print_status(philo, THINK);
 		philo->n_times++;
