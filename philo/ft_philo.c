@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/24 00:40:45 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 00:03:57 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ void	*ft_philo(void *philo_void)
 	table = philo->table;
 	if (philo->table->n_philos == 1)
 		ft_one_philo(philo);
-	pthread_mutex_lock(&table->start);
-	pthread_mutex_unlock(&table->start);
+	while (table->start_time > ft_get_time())
+		usleep(1);
+	pthread_mutex_lock(&philo->eat_mutex);
 	philo->time_to_die = ft_get_time() + table->time_to_die;
-	if (philo->id % 2 == 0)
+	pthread_mutex_unlock(&philo->eat_mutex);
+	if (philo->id % 2 != 0)
 		usleep(table->time_to_eat / 2 * 1000);
 	while (philo->n_times < table->n_times || table->n_times == -1)
 	{

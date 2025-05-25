@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/24 00:41:57 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/24 21:42:53 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_table
 	pthread_mutex_t	ends_mutex;
 	pthread_mutex_t	deads_mutex;
 	long			deads;
-	pthread_mutex_t	start;
 	long			start_time;
 	t_philo			*philos;
 	pthread_mutex_t	print;
