@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:54:00 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/24 21:44:45 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 14:22:39 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ t_table	*ft_loading(int argc, char **argv)
 	pthread_mutex_init(&table->print, NULL);
 	pthread_mutex_init(&table->ends_mutex, NULL);
 	pthread_mutex_init(&table->deads_mutex, NULL);
-	table->start_time = ft_get_time() + (10 * table->n_philos);
+	table->start_time = ft_get_time() + (table->n_philos);
 	return (table);
 }
