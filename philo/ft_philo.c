@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 11:29:04 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 11:48:13 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ void	ft_eat(t_philo *philo)
 
 void	ft_one_philo(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->fork);
-	pthread_mutex_unlock(&philo->fork);
+	while (philo->table->start_time > ft_get_time())
+		usleep(1);
 	ft_print_status(philo, TAKE);
+	pthread_mutex_lock(&philo->eat_mutex);
+	philo->time_to_die = ft_get_time() + philo->table->time_to_die;
+	pthread_mutex_unlock(&philo->eat_mutex);
 	pthread_mutex_lock(&philo->sleep_mutex);
 	philo->is_sleep = 1;
 	pthread_mutex_unlock(&philo->sleep_mutex);
-	while (1)
-		usleep(100000000);
 }
 
 void	*ft_philo(void *philo_void)
@@ -68,7 +69,7 @@ void	*ft_philo(void *philo_void)
 	philo = (t_philo *)philo_void;
 	table = philo->table;
 	if (philo->table->n_philos == 1)
-		ft_one_philo(philo);
+		return (ft_one_philo(philo), NULL);
 	while (table->start_time > ft_get_time())
 		usleep(1);
 	pthread_mutex_lock(&philo->eat_mutex);
