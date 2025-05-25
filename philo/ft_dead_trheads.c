@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 03:00:51 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 11:47:45 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 14:30:43 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,4 @@ void	ft_dead_trheads(t_table *table)
 		else
 			pthread_mutex_unlock(&philo->sleep_mutex);
 	}
-	/*
-	while (table->ends < table->n_philos)
-		usleep(100);
-	i = 0;
-	while (i < table->n_philos && philo->is_sleep == 0)
-	{
-		pthread_detach(philo->thread);
-		philo = philo->next;
-		i++;
-	}*/
 }

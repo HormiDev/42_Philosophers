@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 19:07:33 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/05/25 14:24:33 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/25 15:36:46 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC =	main.c \
 		ft_philo.c \
 		ft_start.c \
 		fts_t_philo.c \
+		ft_eat.c \
 
 OBJ = $(SRC:%.c=%.o)
 

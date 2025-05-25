@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 11:18:12 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:36:32 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ long	ft_get_time(void);
 void	ft_print_status(t_philo *philo, int status);
 void	ft_start(t_table *table);
 void	ft_dead_trheads(t_table *table);
+void	ft_eat(t_philo *philo);
 
 #endif
