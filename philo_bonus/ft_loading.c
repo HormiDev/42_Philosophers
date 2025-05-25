@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:25:03 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:46:19 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:21:58 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_table	*ft_loading(int argc, char **argv)
 		free(table);
 		exit(ft_printerror(4));
 	}
+	sem_unlink("forks");
+	sem_unlink("print");
 	table->forks = sem_open("forks", O_CREAT | O_EXCL, 0644, table->n_philos);
 	table->print = sem_open("print", O_CREAT | O_EXCL, 0644, 1);
 	if (table->forks == SEM_FAILED || table->print == SEM_FAILED)
