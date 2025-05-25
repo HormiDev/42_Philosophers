@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 00:55:29 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 11:48:13 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:41:42 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	*ft_philo(void *philo_void)
 {
 	t_philo	*philo;
 	t_table	*table;
+	long	start_sleep;
 
 	philo = (t_philo *)philo_void;
 	table = philo->table;
@@ -91,7 +92,23 @@ void	*ft_philo(void *philo_void)
 		pthread_mutex_lock(&philo->sleep_mutex);
 		philo->is_sleep = 1;
 		pthread_mutex_unlock(&philo->sleep_mutex);
-		usleep(table->time_to_sleep * 1000);
+		start_sleep = ft_get_time();
+		while(1)
+		{
+			pthread_mutex_lock(&philo->table->deads_mutex);
+			if (philo->table->deads != 0)
+			{
+				pthread_mutex_unlock(&philo->table->deads_mutex);
+				return (NULL);
+			}
+			pthread_mutex_unlock(&philo->table->deads_mutex);
+			if (table->time_to_sleep - (ft_get_time() - start_sleep) <= 100)
+			{
+				usleep((table->time_to_sleep - (ft_get_time() - start_sleep)) * 1000);
+				break ;
+			}
+			usleep(1000 * 100);
+		}
 		pthread_mutex_lock(&philo->table->deads_mutex);
 		if (philo->table->deads != 0)
 		{
