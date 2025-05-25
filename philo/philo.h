@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/24 21:42:53 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 11:18:12 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	fork;
 	pthread_mutex_t	eat_mutex;
+	pthread_mutex_t	sleep_mutex;
+	pthread_mutex_t	n_times_mutex;
 	struct s_philo	*next;
 	struct s_table	*table;
 }	t_philo;
