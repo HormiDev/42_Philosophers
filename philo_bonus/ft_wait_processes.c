@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 02:07:42 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:55:06 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:07:30 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_del_pid(t_table *table, pid_t pid)
 
 void	ft_wait_processes(t_table *table)
 {
-	int	i;
-	int	status;
+	int		i;
+	int		status;
 	pid_t	pid;
 
 	i = 0;
@@ -39,15 +39,15 @@ void	ft_wait_processes(t_table *table)
 	{
 		pid = waitpid(-1, &status, 0);
 		if (WIFEXITED(status))
-		{	
+		{
 			if (WEXITSTATUS(status) == 1)
 			{
 				ft_del_pid(table, pid);
 				ft_kill_pids(table);
-			}	
+			}
 			else
 				ft_del_pid(table, pid);
-		}	
+		}
 		i++;
 	}
 }

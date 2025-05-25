@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 16:50:36 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:08:19 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <string.h>
-#include <semaphore.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <sys/wait.h>
+# include <semaphore.h>
+# include <fcntl.h>
+# include <signal.h>
+# include <sys/wait.h>
 
 typedef struct s_semutex
 {

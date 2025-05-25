@@ -6,15 +6,15 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:25:03 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 16:53:17 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:30:22 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int ft_create_semutex_name(char *sem_name, int id)
+static int	ft_create_semutex_name(char *sem_name, int id)
 {
-	char *num;
+	char	*num;
 
 	ft_strlcpy(sem_name, "semutex_", 20);
 	num = ft_itoa(id);
@@ -25,10 +25,8 @@ int ft_create_semutex_name(char *sem_name, int id)
 	return (0);
 }
 
-int ft_create_semutex(t_table *table)
+static void	ft_alloc_smutex(t_table *table)
 {
-	int i;
-
 	table->semutex = ft_calloc(table->n_philos, sizeof(t_semutex));
 	if (!table->semutex)
 	{
@@ -36,6 +34,13 @@ int ft_create_semutex(t_table *table)
 		free(table);
 		exit(ft_printerror(4));
 	}
+}
+
+static int	ft_create_semutex(t_table *table)
+{
+	int	i;
+
+	ft_alloc_smutex(table);
 	i = 0;
 	while (i < table->n_philos)
 	{
@@ -45,7 +50,8 @@ int ft_create_semutex(t_table *table)
 			exit(ft_printerror(4));
 		}
 		sem_unlink(table->semutex[i].sem_name);
-		table->semutex[i].sem = sem_open(table->semutex[i].sem_name, O_CREAT | O_EXCL, 0644, 1);
+		table->semutex[i].sem = sem_open(table->semutex[i].sem_name,
+				O_CREAT | O_EXCL, 0644, 1);
 		if (table->semutex[i].sem == SEM_FAILED)
 		{
 			ft_clean_table(table);
@@ -56,13 +62,8 @@ int ft_create_semutex(t_table *table)
 	return (0);
 }
 
-t_table	*ft_loading(int argc, char **argv)
+static void	ft_parse_args(t_table *table, int argc, char **argv)
 {
-	t_table	*table;
-
-	table = ft_calloc(1, sizeof(t_table));
-	if (!table)
-		exit(ft_printerror(4));
 	table->n_philos = ft_atol(argv[1]);
 	table->time_to_die = ft_atol(argv[2]);
 	table->time_to_eat = ft_atol(argv[3]);
@@ -71,6 +72,16 @@ t_table	*ft_loading(int argc, char **argv)
 		table->n_times = ft_atol(argv[5]);
 	else
 		table->n_times = -1;
+}
+
+t_table	*ft_loading(int argc, char **argv)
+{
+	t_table	*table;
+
+	table = ft_calloc(1, sizeof(t_table));
+	if (!table)
+		exit(ft_printerror(4));
+	ft_parse_args(table, argc, argv);
 	table->philos = ft_calloc(table->n_philos, sizeof(pid_t));
 	if (!table->philos)
 	{
@@ -89,4 +100,3 @@ t_table	*ft_loading(int argc, char **argv)
 	}
 	return (table);
 }
-

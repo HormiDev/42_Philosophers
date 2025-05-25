@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 02:58:31 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:56:16 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:07:48 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_table	*table;
-	
+
 	if (argc < 5 || argc > 6)
 		return (ft_printerror(1));
 	if (ft_check_arguments(argc, argv))
