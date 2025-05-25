@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:49:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 17:10:57 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 21:30:50 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static void	ft_while_rutine(t_table *table)
 	ft_print_status(table, SLEEP);
 	usleep(table->time_to_sleep * 1000);
 	ft_print_status(table, THINK);
-	if (table->n_times != -1)
-		table->n_times--;
 }
 
 void	ft_philo(t_table *table)
