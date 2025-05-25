@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:49:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 21:30:50 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/26 00:32:33 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	ft_while_rutine(t_table *table)
 	sem_wait(table->semutex[table->id - 1].sem);
 	table->philo_time_to_die = ft_get_time() + table->time_to_die;
 	sem_post(table->semutex[table->id - 1].sem);
-	table->n_times--;
 	ft_print_status(table, EAT);
 	usleep(table->time_to_eat * 1000);
 	sem_post(table->forks);
@@ -50,6 +49,8 @@ static void	ft_while_rutine(t_table *table)
 	ft_print_status(table, SLEEP);
 	usleep(table->time_to_sleep * 1000);
 	ft_print_status(table, THINK);
+	if (table->n_times > 0)
+		table->n_times--;
 }
 
 void	ft_philo(t_table *table)
