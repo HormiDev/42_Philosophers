@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_processes.c                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 22:44:54 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 16:51:15 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/01/20 21:59:25 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/25 16:43:51 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_create_processes(t_table *table)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	dstlen;
+	size_t	srclen;
+	size_t	cont;
 
-	i = 0;
-	table->start_time = ft_get_time() + (table->n_philos);
-	table->philo_time_to_die = table->time_to_die + table->start_time;
-	while (i < table->n_philos)
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	cont = 0;
+	if (dstsize == 0)
+		return (srclen);
+	while (dstlen + cont < dstsize - 1 && src[cont] != '\0')
 	{
-		table->philos[i] = fork();
-		if (table->philos[i] == -1)
-		{
-			ft_clean_table(table);
-			exit(ft_printerror(5));
-		}
-		if (table->philos[i] == 0)
-		{
-			table->id = i + 1;
-			ft_philo(table);
-			exit(0);
-		}
-		i++;
+		dst[dstlen + cont] = src[cont];
+		cont++;
 	}
+	dst[dstlen + cont] = '\0';
+	if (dstsize < dstlen)
+		return (dstsize + srclen);
+	return (dstlen + srclen);
 }

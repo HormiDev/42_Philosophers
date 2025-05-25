@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 00:49:04 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 04:32:56 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:00:12 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ static void	*ft_monitor(void *table_void)
 	table = (t_table *)table_void;
 	while (1)
 	{
+		sem_wait(table->semutex[table->id - 1].sem);
 		if (table->philo_time_to_die < ft_get_time())
 		{
 			ft_print_status(table, DEAD);
 			free(table->philos);
 			free(table);
+			free(table->semutex);
 			exit(1);
 		}
+		sem_post(table->semutex[table->id - 1].sem);
 		usleep(100);
 	}
 }
@@ -33,6 +36,7 @@ static void	*ft_monitor(void *table_void)
 
 void	ft_philo(t_table *table)
 {
+	table->philo_time_to_die = table->start_time + table->time_to_die;
 	pthread_create(&table->monitor, NULL, ft_monitor, (void *)table);
 	while (table->start_time > ft_get_time())
 		usleep(1);
@@ -44,7 +48,9 @@ void	ft_philo(t_table *table)
 		ft_print_status(table, TAKE);
 		sem_wait(table->forks);
 		ft_print_status(table, TAKE);
+		sem_wait(table->semutex[table->id - 1].sem);
 		table->philo_time_to_die = ft_get_time() + table->time_to_die;
+		sem_post(table->semutex[table->id - 1].sem);
 		table->n_times--;
 		ft_print_status(table, EAT);
 		usleep(table->time_to_eat * 1000);
@@ -57,4 +63,7 @@ void	ft_philo(t_table *table)
 			table->n_times--;
 	}
 	pthread_detach(table->monitor);
+	free(table->philos);
+	free(table->semutex);
+	free(table);
 }

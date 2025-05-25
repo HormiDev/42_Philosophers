@@ -6,7 +6,7 @@
 #    By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 00:27:12 by ide-dieg          #+#    #+#              #
-#    Updated: 2025/05/23 04:07:06 by ide-dieg         ###   ########.fr        #
+#    Updated: 2025/05/25 16:46:18 by ide-dieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ SRC =	main.c \
 		ft_loading.c \
 		ft_philo.c \
 		ft_print_status.c \
-		ft_wait_processes.c
+		ft_wait_processes.c \
+		ft_itoa.c \
+		ft_strlcpy.c \
+		ft_strlcat.c \
 		
 
 OBJ = $(SRC:%.c=%.o)

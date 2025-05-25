@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:08:01 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/23 03:55:18 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:50:36 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,13 @@
 #include <semaphore.h>
 #include <fcntl.h>
 #include <signal.h>
-
 #include <sys/wait.h>
+
+typedef struct s_semutex
+{
+	char	sem_name[20];
+	sem_t	*sem;
+}	t_semutex;
 
 typedef struct s_table
 {
@@ -52,13 +57,14 @@ typedef struct s_table
 	pid_t			*philos;
 	sem_t			*forks;
 	sem_t			*print;
+	t_semutex		*semutex;
 	pthread_t		monitor;
 }	t_table;
 
 int		ft_check_arguments(int argc, char **argv);
 int		ft_isdigit(int c);
 long	ft_atol(const char *str);
-int		ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 int		ft_printerror(int error_code);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_create_processes(t_table *table);
@@ -69,5 +75,8 @@ void	ft_clean_table(t_table *table);
 void	ft_kill_pids(t_table *table);
 long	ft_get_time(void);
 t_table	*ft_loading(int argc, char **argv);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_itoa(int n);
 
 #endif

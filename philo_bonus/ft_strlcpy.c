@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_processes.c                              :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 22:44:54 by ide-dieg          #+#    #+#             */
-/*   Updated: 2025/05/25 16:51:15 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/01/20 17:47:23 by ide-dieg          #+#    #+#             */
+/*   Updated: 2025/05/25 16:49:32 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_create_processes(t_table *table)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	cont;
+	size_t	srclen;
 
-	i = 0;
-	table->start_time = ft_get_time() + (table->n_philos);
-	table->philo_time_to_die = table->time_to_die + table->start_time;
-	while (i < table->n_philos)
+	cont = 0;
+	srclen = ft_strlen(src);
+	if (dstsize > 0)
 	{
-		table->philos[i] = fork();
-		if (table->philos[i] == -1)
+		while (cont < srclen && cont < dstsize - 1)
 		{
-			ft_clean_table(table);
-			exit(ft_printerror(5));
+			dst[cont] = src[cont];
+			cont++;
 		}
-		if (table->philos[i] == 0)
-		{
-			table->id = i + 1;
-			ft_philo(table);
-			exit(0);
-		}
-		i++;
+		dst[cont] = 0;
 	}
+	return (srclen);
 }
